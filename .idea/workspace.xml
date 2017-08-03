@@ -16,10 +16,15 @@
       <file leaf-file-name="add_new_group.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/add_new_group.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+            <state relative-caret-position="168">
+              <caret line="23" column="69" lean-forward="false" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
               <folding>
-                <element signature="e#24#82#0" expanded="true" />
+                <element signature="e#201#292#0" expanded="false" />
+                <element signature="e#857#920#0" expanded="false" />
+                <element signature="e#971#1044#0" expanded="false" />
+                <element signature="e#1817#1890#0" expanded="false" />
+                <element signature="e#2385#2458#0" expanded="false" />
+                <element signature="e#2492#2506#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -189,10 +194,15 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/add_new_group.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+        <state relative-caret-position="168">
+          <caret line="23" column="69" lean-forward="false" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
           <folding>
-            <element signature="e#24#82#0" expanded="true" />
+            <element signature="e#201#292#0" expanded="false" />
+            <element signature="e#857#920#0" expanded="false" />
+            <element signature="e#971#1044#0" expanded="false" />
+            <element signature="e#1817#1890#0" expanded="false" />
+            <element signature="e#2385#2458#0" expanded="false" />
+            <element signature="e#2492#2506#0" expanded="false" />
           </folding>
         </state>
       </provider>
