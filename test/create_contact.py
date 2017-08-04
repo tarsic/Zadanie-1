@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-from contact import contact
-from applicashka import Applicashka
+
+from fixture.applicashka import Applicashka
+from model.contact import contact
 
 
 @pytest.fixture
