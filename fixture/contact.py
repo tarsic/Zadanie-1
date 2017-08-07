@@ -1,36 +1,15 @@
-from selenium.webdriver.firefox.webdriver import WebDriver
+class ContactHelper:
 
-class Applicashka():
-
-    def __init__(self):
-        self.wd = WebDriver(capabilities={"marionette": False})
-        self.wd.implicitly_wait(60)
-
-
-    def open_home_page(self):
-        # open home page
-        wd = self.wd
-        wd.get("http://localhost/addressbook/index.php")
-        return wd
-
-    def login(self, username="admin", password="secret"):
-        wd = self.open_home_page()
-        # login
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys(username)
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys(password)
-        wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
+    def __init__(self, app):
+        self.app = app
 
     def create_new_contact(self):
-        wd = self.wd
+        wd = self.app.wd
         # create new contact
         wd.find_element_by_link_text("add new").click()
 
     def fill_out_form(self, contact):
-        wd = self.wd
+        wd = self.app.wd
         self.create_new_contact()
         # fill out the form
         wd.find_element_by_name("firstname").click()
@@ -55,19 +34,6 @@ class Applicashka():
 
 
     def submit_creating(self):
-            wd = self.wd
+            wd = self.app.wd
             # submit creating
             wd.find_element_by_name("submit").click()
-
-    def logout(self):
-        wd=self.wd
-        # logout
-        wd.find_element_by_link_text("Logout").click()
-
-
-    def destroy(self):
-        self.wd.quit()
-
-
-
-
