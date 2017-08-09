@@ -66,6 +66,11 @@ class ContactHelper:
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
 
+    def add_cont_to_group(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_name("add").click()
+        wd.find_element_by_link_text("group page \"adept\"").click()
 
     def submit_creating(self):
             wd = self.app.wd
