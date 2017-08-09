@@ -60,6 +60,12 @@ class ContactHelper:
         wd.find_element_by_name("address").send_keys(contact.address)
         self.submit_creating()
 
+    def delete_contact(self):
+        wd = self.app.wd
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+
 
     def submit_creating(self):
             wd = self.app.wd
