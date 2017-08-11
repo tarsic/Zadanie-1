@@ -35,6 +35,7 @@ class ContactHelper:
         wd.find_element_by_name("address").clear()
         wd.find_element_by_name("address").send_keys(contact.address)
         wd.find_element_by_name("update").click()
+        wd.find_element_by_partial_link_text("home page").click()
 
     def fill_out_form(self, contact):
         wd = self.app.wd
@@ -59,6 +60,8 @@ class ContactHelper:
         wd.find_element_by_name("address").clear()
         wd.find_element_by_name("address").send_keys(contact.address)
         self.submit_creating()
+        wd.find_element_by_partial_link_text("home page").click()
+
 
     def delete_contact(self):
         wd = self.app.wd
@@ -70,7 +73,7 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_name("add").click()
-        wd.find_element_by_link_text("group page \"adept\"").click()
+        wd.find_element_by_partial_link_text("group page").click()
 
     def submit_creating(self):
             wd = self.app.wd
