@@ -79,3 +79,8 @@ class ContactHelper:
             wd = self.app.wd
             # submit creating
             wd.find_element_by_name("submit").click()
+
+    def count(self):
+        wd = self.app.wd
+        self.app.open_home_page()
+        return len(wd.find_elements_by_name("selected[]"))
