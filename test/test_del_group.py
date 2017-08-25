@@ -1,7 +1,7 @@
 from model.group import Group
 
 def test_delete_first_group(app):
-    if app.group.count () == 0:
+    if app.group.count() == 0:
         app.group.fill_group_form(Group(name="test"))
     old_groups = app.group.get_group_list()
     app.group.delete_first_group()
