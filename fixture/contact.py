@@ -89,16 +89,18 @@ class ContactHelper:
 
     def return_home(self):
         wd = self.app.wd
-        wd.find_element_by_xpath("//div[@id='nav']//a[.='home']")
+        if not(wd.current_url.endswith("/index.php")):
+            wd.find_element_by_xpath("//div[@id='nav']//a[.='home']").click()
 
     def get_contact_list(self):
         wd = self.app.wd
         self.return_home()
         contacts = []
         for element in wd.find_elements_by_name("entry"):
-            text = element.text
+            cells = element.find_elements_by_tag_name("td")
             id = element.find_element_by_name("selected[]").get_attribute("value")
-            contacts.append(Contact(firstname=text, middlename=None, lastname=text, nickname=None, company=None, address=text, id=id))
+            contacts.append(Contact(firstname=cells[2].text, middlename=None, lastname=cells[1].text, nickname=None,
+                                    company=None, address=cells[3].text, id=id))
         return contacts
 
 
