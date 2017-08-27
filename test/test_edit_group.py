@@ -1,7 +1,8 @@
 from model.group import Group
 
+
 def test_edit_group_name(app):
-    if app.group.count () == 0:
+    if app.group.count() == 0:
         app.group.fill_group_form(Group(name="test"))
     old_groups = app.group.get_group_list()
     group = Group(name="New name")
