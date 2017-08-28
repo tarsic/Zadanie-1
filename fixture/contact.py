@@ -10,14 +10,13 @@ class ContactHelper:
         # create new contact
         wd.find_element_by_link_text("add new").click()
 
-    def edit_contact(self):
+    def edit_contact(self, index):
         wd = self.app.wd
-        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        wd.find_elements_by_xpath("//img[@title='Edit']")[index].click()
 
-
-    def fill_edit_form(self, contact):
+    def fill_edit_form(self, contact, index):
         wd = self.app.wd
-        self.edit_contact()
+        self.edit_contact(index)
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)
@@ -66,9 +65,9 @@ class ContactHelper:
         wd.find_element_by_partial_link_text("home page").click()
         self.cache_contact = None
 
-    def delete_contact(self):
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
         self.cache_contact = None
