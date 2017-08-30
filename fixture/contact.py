@@ -1,4 +1,5 @@
 from model.contact import Contact
+import re
 
 
 class ContactHelper:
@@ -64,10 +65,19 @@ class ContactHelper:
         wd.find_element_by_name("mobile").send_keys(contact.mobilephone)
         wd.find_element_by_name("nickname").click()
         wd.find_element_by_name("nickname").clear()
+        wd.find_element_by_name("nickname").send_keys(contact.nickname)
+        wd.find_element_by_name("email").click()
+        wd.find_element_by_name("email").clear()
+        wd.find_element_by_name("email").send_keys(contact.email)
+        wd.find_element_by_name("email2").click()
+        wd.find_element_by_name("email2").clear()
+        wd.find_element_by_name("email2").send_keys(contact.email2)
+        wd.find_element_by_name("email3").click()
+        wd.find_element_by_name("email3").clear()
+        wd.find_element_by_name("email3").send_keys(contact.email3)
         wd.find_element_by_name("phone2").click()
         wd.find_element_by_name("phone2").clear()
         wd.find_element_by_name("phone2").send_keys(contact.secondaryphone)
-        wd.find_element_by_name("nickname").send_keys(contact.nickname)
         wd.find_element_by_name("company").click()
         wd.find_element_by_name("company").clear()
         wd.find_element_by_name("company").send_keys(contact.company)
@@ -151,4 +161,14 @@ class ContactHelper:
         secondaryphone = wd.find_element_by_name("phone2").get_attribute("value")
         return  Contact(firstname=firstname, lastname=lastname, id=id, homephone=homephone,
                         mobilephone=mobilephone, workphone=workphone, secondaryphone=secondaryphone)
+
+    def get_contact_from_view_page(self, index):
+        wd = self.app.wd
+        self.open_contact_view_by_index(index)
+        text = wd.find_element_by_id("content").text
+        homephone = re.search("H: (.*)", text).group(1)
+        workphone = re.search("W: (.*)", text).group(1)
+        mobilephone = re.search("M: (.*)", text).group(1)
+        secondaryphone = re.search("P: (.*)", text).group(1)
+        return Contact(homephone=homephone, mobilephone=mobilephone, workphone=workphone, secondaryphone=secondaryphone)
 
