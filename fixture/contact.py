@@ -1,5 +1,7 @@
 from model.contact import Contact
 import re
+from string import digits, hexdigits
+from random import choice
 
 
 class ContactHelper:

@@ -41,6 +41,7 @@ class GroupHelper:
 
     def delete_first_group(self):
         self.delete_group_by_index(0)
+        self.group_cache = None
 
     def delete_group_by_index(self, index):
         wd = self.app.wd
@@ -54,7 +55,6 @@ class GroupHelper:
     def return_to_groups_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("group page").click()
-        self.group_cache = None
 
     def select_first_group(self):
         wd = self.app.wd
@@ -72,6 +72,7 @@ class GroupHelper:
 
     def edit_first_group(self):
         self.edit_group_by_index(0)
+        self.group_cache = None
 
     def edit_group_by_index(self, index, new_group_data):
         wd = self.app.wd
