@@ -97,6 +97,18 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         self.cache_contact = None
 
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.select_contact_by_id(id)
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+        self.cache_contact = None
+
+
     def add_cont_to_group(self):
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
