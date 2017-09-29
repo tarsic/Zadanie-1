@@ -18,6 +18,15 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_xpath("//img[@title='Edit']")[index].click()
 
+    def edit_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("a[href='edit.php?id=%s']" %id).click()
+
+    #< a
+    #href = "edit.php?id=68" > < img
+    #src = "icons/pencil.png"
+    #title = "Edit"
+    #alt = "Edit" > < / a >
     def fill_edit_form(self, contact, index):
         wd = self.app.wd
         self.edit_contact(index)
@@ -39,6 +48,31 @@ class ContactHelper:
         wd.find_element_by_name("address").click()
         wd.find_element_by_name("address").clear()
         wd.find_element_by_name("address").send_keys(contact.address)
+        wd.find_element_by_name("update").click()
+        wd.find_element_by_partial_link_text("home page").click()
+        self.cache_contact = None
+
+    def fill_edit_form_by_id(self, id, contact_now):
+        wd = self.app.wd
+        self.edit_contact_by_id(id)
+        wd.find_element_by_name("firstname").click()
+        wd.find_element_by_name("firstname").clear()
+        wd.find_element_by_name("firstname").send_keys(contact_now.firstname)
+        wd.find_element_by_name("middlename").click()
+        wd.find_element_by_name("middlename").clear()
+        wd.find_element_by_name("middlename").send_keys(contact_now.middlename)
+        wd.find_element_by_name("lastname").click()
+        wd.find_element_by_name("lastname").clear()
+        wd.find_element_by_name("lastname").send_keys(contact_now.lastname)
+        wd.find_element_by_name("nickname").click()
+        wd.find_element_by_name("nickname").clear()
+        wd.find_element_by_name("nickname").send_keys(contact_now.nickname)
+        wd.find_element_by_name("company").click()
+        wd.find_element_by_name("company").clear()
+        wd.find_element_by_name("company").send_keys(contact_now.company)
+        wd.find_element_by_name("address").click()
+        wd.find_element_by_name("address").clear()
+        wd.find_element_by_name("address").send_keys(contact_now.address)
         wd.find_element_by_name("update").click()
         wd.find_element_by_partial_link_text("home page").click()
         self.cache_contact = None
