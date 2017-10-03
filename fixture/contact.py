@@ -1,7 +1,5 @@
 from model.contact import Contact
 import re
-from string import digits, hexdigits
-from random import choice
 
 
 class ContactHelper:
@@ -146,6 +144,17 @@ class ContactHelper:
     def add_cont_to_group(self):
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_name("add").click()
+        wd.find_element_by_partial_link_text("group page").click()
+        self.cache_contact = None
+
+    def add_cont_to_group_by_id(self, id, group_id):
+        wd = self.app.wd
+        self.select_contact_by_id(id)
+        #wd.find_element_by_css_selector("select[name='to_group']").click()
+        #wd.find_element_by_css_selector("option[value='%group_id']" %group_id).select()
+        wd.find_element_by_xpath("//select[@name='to_group']/option[@value='%group_id']" %group_id).click()
+        #wd.find_element_by_css_selector("a[href='edit.php?id=%s']" %id).click()
         wd.find_element_by_name("add").click()
         wd.find_element_by_partial_link_text("group page").click()
         self.cache_contact = None

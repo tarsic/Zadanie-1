@@ -17,9 +17,10 @@ def test_edit_some_contact(app, db, check_ui):
     old_contacts[index] = contact_now
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
     if check_ui:
-        #def clean(contact):
-           # return Contact(id=contact_was.id, firstname=contact.firstname.strip())
-       # new_contacts = list(map(clean, db.get_contact_list()))
+        def clean(contact):
+            return Contact(id=contact.id, firstname=contact.firstname.strip(), lastname=contact.lastname.strip(),
+                           address=contact.address.strip())
+        new_contacts = list(map(clean, db.get_contact_list()))
         assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
 
 

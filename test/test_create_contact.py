@@ -32,10 +32,16 @@ testdata = [
 
 
 @pytest.mark.parametrize("contact", testdata, ids=[repr(x) for x in testdata])
-def test_create_contact(app, db, contact):
+def test_create_contact(app, db, contact, check_ui):
     old_contacts = db.get_contact_list()
     app.contact.fill_out_form(contact)
     assert len(old_contacts) + 1 == app.contact.count()
     new_contacts = db.get_contact_list()
     old_contacts.append(contact)
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
+    if check_ui:
+        def clean(contact):
+            return Contact(id=contact.id, firstname=contact.firstname.strip(), lastname=contact.lastname.strip(),
+                           address=contact.address.strip())
+        new_contacts = list(map(clean, db.get_contact_list()))
+        assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
